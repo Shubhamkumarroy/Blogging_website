@@ -78,6 +78,16 @@ def update(request,id):
     member.description =description
     member.save()
     return redirect('/blogs/')
-
+def search(request):
+        t1=request.POST.get('search_blog','')
+        print(t1)
+        if len(t1)!=0:
+            member=Blog.objects.get(title=t1)
+            template=loader.get_template('search_blog.html')
+            context={'se':member}
+            return HttpResponse(template.render(context,request))
+        else:
+            return redirect('/Blogger/')
+            
 
 
