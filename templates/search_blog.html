@@ -30,7 +30,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        {% comment %} <a class="navbar-brand fs-2" href="#"><b>Home</b></a> {% endcomment %}
+        <!-- <a class="navbar-brand fs-2" href="#"><b>Home</b></a>  -->
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
@@ -43,10 +43,7 @@
               <a class="nav-link" href="#"></a>
             </li>
           </ul>
-          <form class="d-flex" role="search"action="{% url 'search' %}">
-            <input type="text"input class="form-control me-2" type="search"id="search_blog" name="search_blog" placeholder="Search blog" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit" > Search </button>
-          </form>
+
           <span id="sign" class="navbar-text sig px-5 fs-4">
             <a href="{% url 'logoutuser' %}"><b>Logout</b></a>
         </div>
@@ -56,32 +53,32 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <div>
           <div class="container">
-            <!-- <nav class="navbar bg-dark rounded">
-              <div class="container-fluid">
-                <a class="navbar-brand"></a>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search blog" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-              </div>
-            </nav> -->
-            <!-- {% for x in y %} -->
+
+            {% for x in y %}
+    
+            
+          {% if x.title == id1 %} 
             <div class="card m-2">
               <div class="card-body">
-                      <h3><div>{{x.title}}
+               
+                      <h3><div class="font-roboto">{{x.title}}
                           <a class="btn btn-success"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" href="{%url 'edit' x.id %}" role="button">Edit</a>
                       {% comment %} <button type="button" class="btn btn-success"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Edit</button> {% endcomment %}
                       <a class="btn btn-danger"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" href="{%url 'delete' x.id %}" role="button">Delete</a>
                       {% comment %} <button type="button" class="btn btn-danger"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Delete</button> {% endcomment %}
                       </div></h3>
                       <br>
-                      <div>{{x.description}}</div>
+                      <div class="font-roboto">{{x.description}}</div>
   
                   
               </div>
-            </div>
-            <!-- {% endfor %} -->
-            <a class="btn btn-primary" href="{%url 'create'%}" role="button">Publish New One</a>
+            </div> 
+            {% comment %} {% else %} {% endcomment %}
+            {% comment %} <h1>shubham</h1> {% endcomment %}
+            {% endif %}
+            
+            {% endfor %} 
+            <a class="btn btn-primary" href="{%url 'create' 5 %}" role="button">Publish New One</a>
           </div>
         
         </div>

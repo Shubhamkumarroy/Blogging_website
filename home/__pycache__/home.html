@@ -317,14 +317,12 @@ box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.15);
               <br>
               <h2> <p class="text-white oh">Create a unique and beautiful blog easily.</p></h2>
               <br>
-              {% comment %} <h1>{{user.id}}</h1>
-              <h2>{{user.first_name}}</h2>
-              <h2>{{user.last_name}}</h2> {% endcomment %}
+              <h1>{{user.id}}</h1>
   
               
               {% comment %} val={{id1}} {% endcomment %}
 
-              <a href="{% url 'create' 1 %}" class="cta ga-hero-cta text-black"><div class="text-center"><button class="btnown"> <span class="font-weight-bold"> Create your blog</span></button></div> </a>
+              <a href="{% url 'create' {{}} %}" class="cta ga-hero-cta text-black"><div class="text-center"><button class="btnown"> <span class="font-weight-bold"> Create your blog</span></button></div> </a>
       
               
             </header>

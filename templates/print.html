@@ -4,8 +4,121 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Blogging Website</title>
+ 
+       <script src="https://use.fontawesome.com/fe459689b4.js"></script>
+      
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <style>
+      @import url(https://fonts.googleapis.com/css?family=Lobster);
+
+@import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css);
+
+
+body {
+  background-image: url(https://subtlepatterns.com/patterns/bedge_grunge.png);
+  background-position: initial initial;
+  background-repeat: initial initial;
+}
+.bt{
+  border:none
+}
+.green{
+  background-color: green;
+}
+.red{
+  background-color: red;
+}
+.alert .inner {
+  display: block;
+  padding: 6px;
+  margin: 6px;
+  border-radius: 3px;
+  border: 1px solid rgb(180,180,180);
+  background-color: rgb(212,212,212);
+}
+
+.alert .close {
+  float: right;
+  margin: 3px 12px 0px 0px;
+  cursor: pointer;
+}
+
+.alert .inner,.alert .close {
+  color: rgb(88,88,88);
+}
+
+.alert input {
+  display: none;
+}
+
+.alert input:checked ~ * {
+  animation-name: dismiss,hide;
+  animation-duration: 300ms;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  animation-delay: 0s,100ms;
+}
+
+.alert.error .inner {
+  border: 1px solid rgb(238,211,215);
+  background-color: rgb(242,222,222);
+}
+
+.alert.error .inner,.alert.error .close {
+  color: rgb(185,74,72);
+}
+
+.alert.success .inner {
+  border: 1px solid rgb(214,233,198);
+  background-color: rgb(223,240,216);
+}
+
+.alert.success .inner,.alert.success .close {
+  color: rgb(70,136,71);
+}
+
+.alert.info .inner {
+  border: 1px solid rgb(188,232,241);
+  background-color: rgb(217,237,247);
+}
+
+.alert.info .inner,.alert.info .close {
+  color: rgb(58,135,173);
+}
+
+.alert.warning .inner {
+  border: 1px solid rgb(251,238,213);
+  background-color: rgb(252,248,227);
+}
+
+.alert.warning .inner,.alert.warning .close {
+  color: rgb(192,152,83);
+}
+
+@keyframes dismiss {
+  0% {
+    opacity: 1;
+  }
+  90%, 100% {
+    opacity: 0;
+    font-size: 0.1px;
+    transform: scale(0);
+  }
+}
+
+@keyframes hide {
+  100% {
+    height: 0px;
+    width: 0px;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+  }
+}
+  
       @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
       .font-roboto{
         font-family: 'Roboto', sans-serif;
@@ -59,38 +172,119 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <div>
+      {% for message in messages %}
+      <div style="width: 500px; margin: 0 auto;"><!-- DEMO CONTAINER -->
+        <div class="alert error">
+          <input type="checkbox" id="alert1"/>
+          <label class="close" title="close" for="alert1">
+            <i class="icon-remove"></i>
+          </label>
+          <p class="inner">
+            <strong>Warning!</strong> {{message}}!
+            <hr>
+          </p>
+        </div>
+         <!-- Container End Visual -->
+      </div>
+      {% endfor %}
+    </div>
+    <div>
           <div class="container py-5">
-            <!-- <nav class="navbar bg-dark rounded">
-              <div class="container-fluid">
-                <a class="navbar-brand"></a>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search blog" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-              </div>
-            </nav> -->
+            
             {% for x in y %}
             <div class="card m-2">
               <div class="card-body">
                       <h3><div class="font-roboto">{{x.title}}
                           <a class="btn btn-success"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" href="{%url 'edit' x.id %}" role="button">Edit</a>
-                      {% comment %} <button type="button" class="btn btn-success"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Edit</button> {% endcomment %}
-                      <a class="btn btn-danger"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" href="{%url 'delete' x.id %}" role="button">Delete</a>
-                      {% comment %} <button type="button" class="btn btn-danger"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Delete</button> {% endcomment %}
+                          <a class="btn btn-danger"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" href="{%url 'delete' x.id %}" role="button">Delete</a>
+                      
                       </div></h3>
                       <br>
                       <div class="font-roboto">{{x.description}}</div>
+                      
   
                   
               </div>
+              <div>
+               
+                {% comment %} <h1>{{x.id}}</h1> {% endcomment %}
+                <button class="bt" id='{{x.id}}1' onclick='handlelike({{x.id}})'><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i></button>
+                <button class="bt" id='{{x.id}}2' onclick='handledislike({{x.id}})'><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i></button>
+                
+              
+              </div>
             </div>
+            
             {% endfor %}
-            <a class="btn btn-primary" href="{%url 'create'%}" role="button">Publish New One</a>
+            <a class="btn btn-primary" href="{%url 'create' 5%}" role="button">Publish New One</a>
           </div>
         
         </div>
     </div>
+  
+    <script  >
+      var btn1 = document.getElementById('bt1');
+      var btn2 = document.getElementById('bt2');
+      console.log(btn1);
+      console.log(btn2);
+      console.log(this);
       
+      {% comment %} btn1.addEventListener('click', function() {
+        console.log("hsddghjfjs")
+          if (btn1.classList.contains('green')) {
+            btn1.classList.remove('green');
+          
+          } 
+        else
+        btn1.classList.add('green')
+
+        btn2.classList.remove('red')
+      
+      });
+      
+      btn2.addEventListener('click', function() {
+        
+          if (btn2.classList.contains('red')) {
+            btn2.classList.remove('red');
+          
+          } 
+        else
+        btn2.classList.add('red')
+
+        btn1.classList.remove('green')
+        
+      }); {% endcomment %}
+    function  handlelike(id)
+    {
+      console.log(id+'1')
+      
+      var btn1 = document.getElementById(id+'1');
+      var btn2 = document.getElementById(id+'2');
+      if (btn1.classList.contains('green')) {
+        btn1.classList.remove('green');
+      
+      } 
+    else
+    btn1.classList.add('green')
+
+    btn2.classList.remove('red')
+    }      
+    function  handledislike(id)
+    {
+      var btn1 = document.getElementById(id+'1');
+      var btn2 = document.getElementById(id+'2');
+      if (btn2.classList.contains('red')) {
+        btn2.classList.remove('red');
+      
+      } 
+    else
+    btn2.classList.add('red')
+
+    btn1.classList.remove('green')
+    }      
+      
+             </script>
   </body>
+  
 
 </html>

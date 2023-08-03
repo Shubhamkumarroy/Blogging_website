@@ -122,30 +122,34 @@ body {
     <br>
   <div class="">
     <main class="form-signin w-100 m-auto">
-      <form action="{% url 'loginuser' %}" method="post">
+      <form action="{% url 'accountcreate' %}" method="post">
         {% csrf_token %}
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-    
+        <h1 class="h3 mb-3 fw-normal text-center">Please sign up</h1>
         <div class="form-floating">
-          <input type="text" class="form-control" id="floatingInput" name="username" placeholder="john">
+            <input type="number" class="form-control" id="floatingInput" name="mobile" placeholder="">
+            <label for="floatingInput">Mobile number</label>
+        </div>
+        <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInput" name="email" placeholder="">
+            <label for="floatingInput">Email</label>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="floatingInput" name="username" placeholder="">
           <label for="floatingInput">Username</label>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" name="password"   placeholder="Password">
+          <input type="password" class="form-control" id="floatingPassword" name="password"   placeholder="password">
           <label for="floatingPassword">Password</label>
         </div>
     
         <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+        <!-- Don't have an account? <button type="submit">Sign up</button> -->
         <p class="mt-5 mb-3 text-muted"></p>
       </form>
     </main>
   </div>
-  
   </body>
 
 </html>
